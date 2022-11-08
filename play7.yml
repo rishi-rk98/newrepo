@@ -1,0 +1,27 @@
+---
+- name: My Play
+  hosts: 192.168.7.37
+  become: true
+  gather_facts: no
+  remote_user: ansible
+  tasks:
+  - name: installing httpd
+    yum: 
+      name: httpd
+      state: latest
+  - name: copy a html file
+    copy:
+      dest: /var/www/html/index.html
+      content: "<html> <h1> Managed by ansible </h1> </html>"
+      mode: '0644'
+  - name: starting a service
+    service:
+      name: httpd
+      state: started
+  - name: add http to firewalld
+    firewalld: 
+      service: http
+      state: enabled
+      permanent: yes
+      immediate: yes
+...

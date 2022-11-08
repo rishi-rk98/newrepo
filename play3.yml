@@ -1,0 +1,15 @@
+---
+- name: Play3 to Remove User
+  hosts: 192.168.7.37
+  become: true
+  remote_user: ansible
+  tasks:
+  - name: Remove User
+    user:
+     name: dbadm
+     comment: "Used for database admins"
+     shell: /bin/bash
+     state: absent
+     remove: yes
+...
+

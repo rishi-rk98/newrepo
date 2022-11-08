@@ -1,0 +1,13 @@
+---
+- name: Play1 to Create User
+  hosts: 192.168.7.37
+  become: true
+  remote_user: ansible
+  tasks:
+  - name: Create User
+    user:
+     name: king
+     comment: "King"
+     password: $6$donvojdojhfowdfo$3NvYHlPm7r/kSYz3lp5Hpc2W.BX/V38cOAI/bNWUPrxpgdH3wn2zNJuNhJ9nhfdDRSPiNSVlEalRNNIBZkw8Y0
+     state: present
+...

@@ -1,0 +1,14 @@
+---
+- name: Play1 to Create User
+  hosts: 192.168.7.37
+  become: true
+  remote_user: ansible
+  tasks:
+  - name: Create User
+    user:
+     name: dbadm
+     comment: "Used for database admins"
+     shell: /bin/bash
+     state: present
+...
+

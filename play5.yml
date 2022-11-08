@@ -1,0 +1,19 @@
+---
+- name: My Play
+  hosts: 192.168.7.37
+  become: true
+  gather_facts: no
+  remote_user: ansible
+  tasks:
+  - name: Copy a File
+    copy:
+      src: /etc/yum.repos.d/rhel.repo
+      dest: /etc/yum.repos.d/rhel.repo
+      owner: root
+      group: root
+      mode: '0644'
+  - name: install mariadb
+    yum:
+     name: mariadb
+     state: absent
+...
